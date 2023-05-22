@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Last updated on :
-# Time-stamp: <2023-22-05 11:01:42 arthur.bert@hec.edu>
+# Time-stamp: <2023-22-05 16:54:42 arthur.bert@hec.edu>
 # PCBS - Prog201 Cogmaster ENS-PSL 2023
 
 ##############################################################################
@@ -53,8 +53,8 @@ timeBetweenTrials = 750 #in miliseconds
 
 minNumberTrainingExp = 1 #no unit
 maxNumberTrainingExp = 100 #no unit
-numberOfTrialsBySession = 3 #no unit
-numberOfSession = 3 #no unit
+numberOfTrialsBySession = 2 #no unit
+numberOfSession = 2 #no unit
 totalNumberOfTrials = numberOfTrialsBySession * numberOfSession #no unit
 trainingThreshold = 0.5 #no unit
 
@@ -162,7 +162,7 @@ def shuffle_and_pair_list(list1,list2,maxLength=100):
             # Starting here, the rest of the function is only compatible with
             # this exact script ; modify accordingly when reusing.
             None,
-            list1[index][1]+" "+list1[index][2] + " vs " + list2[index][1] + " " + list2[index][2],
+            list1[index][2]+" "+list1[index][1] + " vs " + list2[index][2] + " " + list2[index][1],
             ""])
         if shuffledPair[index][0][2] == shuffledPair[index][1][2]:
             shuffledPair[index][4] = SAME_SIZE_RESPONSE_KEY
@@ -210,7 +210,7 @@ trainingExperiments = shuffle_and_pair_list(
 
 # III.B. Training Experiment #################################################
 
-exp = expyriment.design.Experiment(name="Size of normal letters, switched letters, and pseudoletters.")
+exp = expyriment.design.Experiment(name="SizeOfletters")
 expyriment.control.defaults.window_mode
 expyriment.control.initialize(exp)
 
@@ -224,14 +224,14 @@ instructions = expyriment.stimuli.TextScreen("Instructions",
     Si les deux stimulis sont de taille différente, appuez sur '{DIFFERENT_SIZE_RESPONSE_KEY.upper()}'
 
     Appuyez sur la barre d'espace pour commencer l'expérience.""")
-    
-expyriment.control.start(skip_ready_screen=False)
+
+expyriment.control.start(skip_ready_screen=True)
 instructions.present()
 exp.keyboard.wait_char(" ")
+blankscreen.present()
 
 trainingExperiments = create_dual_stimuli(trainingExperiments)
 
-blankscreen.present()
 exp.clock.wait(timeBetweenTrials)
 
 sucessRate = 0
@@ -292,6 +292,8 @@ instructions = expyriment.stimuli.TextScreen("Instructions",
 
     Appuyez sur la barre d'espace pour commencer l'expérience.""")
 
+exp.add_data_variable_names(['Session','Type', 'ExpectedAnswer', 'Answer', 'RT'])
+
 instructions.present()
 exp.keyboard.wait_char(" ")
 
@@ -317,8 +319,11 @@ for sessionNumber in range(numberOfSession):
                                           duration=MAX_RESPONSE_DELAY)
         blankscreen.present()
         exp.clock.wait(timeBetweenTrials)
-        exp.data.add([experiment[3],key, rt])
-
+        exp.data.add([sessionNumber+1,
+                      sessions[sessionNumber][index][3],
+                      sessions[sessionNumber][index][4],
+                      key,
+                      rt])
 
 expyriment.control.end()
 
@@ -326,8 +331,4 @@ expyriment.control.end()
 # V. Data formating, analysis, and saving.
 ##############################################################################
 
-# Format data
-
-# Analyze data
-
-# Save data
+# See second file, DataAnalysis.py
