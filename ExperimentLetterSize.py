@@ -83,10 +83,18 @@ letterPath = abspath+"/lettresPseudolettres"
 # Create LetterList for the training experiment
 trainingPath = letterPath + "/stimtraining"
 trainingLetter = ["n","u","x"]
-trainingSmallNormalLetterList = [[letter, "letter", "small", trainingPath + "/"+ letter + "100.bmp"] for letter in trainingLetter]
-trainingBigNormalLetterList = [[letter, "letter", "big", trainingPath + "/"+ letter + "110.bmp"] for letter in trainingLetter]
-trainingSmallPseudoLetterList = [[letter, "pseudoletter", "small", trainingPath + "/"+ letter + "p100.bmp"] for letter in trainingLetter]
-trainingBigPseudoLetterList = [[letter, "pseudoletter", "big", trainingPath + "/"+ letter + "p110.bmp"] for letter in trainingLetter]
+trainingSmallNormalLetterList = [[letter, "letter", "small",
+                                  trainingPath + "/"+ letter + "100.bmp"]
+                                 for letter in trainingLetter]
+trainingBigNormalLetterList =   [[letter, "letter", "big",
+                                  trainingPath + "/"+ letter + "110.bmp"]
+                                 for letter in trainingLetter]
+trainingSmallPseudoLetterList = [[letter, "pseudoletter", "small",
+                                  trainingPath + "/"+ letter + "p100.bmp"]
+                                 for letter in trainingLetter]
+trainingBigPseudoLetterList =   [[letter, "pseudoletter", "big",
+                                  trainingPath + "/"+ letter + "p110.bmp"]
+                                 for letter in trainingLetter]
 
 # Create concatenated list for the training experiment, containing
 # respectively only letter stimuli and all possible stimuli
@@ -96,12 +104,24 @@ trainingLetterList = trainingSmallNormalLetterList + trainingBigNormalLetterList
 # Create LetterList for the recorded experiment
 stimuliPath = letterPath + "/stimuli/lettres"
 stimuliLetter = ["a","c","e","m","r","s","v","w","z"]
-stimuliSmallNormalLetterList = [[letter, "letter", "small", stimuliPath + "/" + letter + "100.bmp"] for letter in stimuliLetter]
-stimuliBigNormalLetterList = [[letter, "letter", "big", stimuliPath + "/" + letter + "110.bmp"] for letter in stimuliLetter]
-stimuliSmallReversedLetterList = [[letter, "switched letter", "small", stimuliPath + "/" + letter + "s100.bmp"] for letter in stimuliLetter]
-stimuliBigReversedLetterList = [[letter, "switched letter", "big", stimuliPath + "/" + letter + "s110.bmp"] for letter in stimuliLetter]
-stimuliSmallPseudoLetterList = [[letter, "pseudoletter", "small", stimuliPath + "/" + letter + "p100.bmp"] for letter in stimuliLetter]
-stimuliBigPseudoLetterList = [[letter, "pseudoletter", "big", stimuliPath + "/" + letter + "p110.bmp"] for letter in stimuliLetter]
+stimuliSmallNormalLetterList =   [[letter, "letter", "small",
+                                   stimuliPath + "/" + letter + "100.bmp"]
+                                  for letter in stimuliLetter]
+stimuliBigNormalLetterList =     [[letter, "letter", "big",
+                                   stimuliPath + "/" + letter + "110.bmp"]
+                                  for letter in stimuliLetter]
+stimuliSmallReversedLetterList = [[letter, "switched letter", "small",
+                                   stimuliPath + "/" + letter + "s100.bmp"]
+                                  for letter in stimuliLetter]
+stimuliBigReversedLetterList =   [[letter, "switched letter", "big",
+                                   stimuliPath + "/" + letter + "s110.bmp"]
+                                  for letter in stimuliLetter]
+stimuliSmallPseudoLetterList =   [[letter, "pseudoletter", "small",
+                                   stimuliPath + "/" + letter + "p100.bmp"]
+                                  for letter in stimuliLetter]
+stimuliBigPseudoLetterList =     [[letter, "pseudoletter", "big",
+                                   stimuliPath + "/" + letter + "p110.bmp"]
+                                  for letter in stimuliLetter]
 
 # Create concatenated list for the recorded experiment, containing
 # respectively only letter stimuli and all possible stimuli
@@ -185,7 +205,8 @@ def create_dual_stimuli(list):
     compList = list
     for index in range(len(list)):
         # We create a global canva on which to plot the stimulus
-        canva = expyriment.stimuli.Canvas(size=(screenLength,screenHeight),colour=(255,255,255))
+        canva = expyriment.stimuli.Canvas(
+            size=(screenLength,screenHeight),colour=(255,255,255))
         
         # The two letter stims
         Stim1 = expyriment.stimuli.Picture(
