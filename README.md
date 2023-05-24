@@ -4,6 +4,8 @@ DOI 10.3758/s13423-014-075308
 
 The article is available in this distro, as "New et al. - 2015 - The letter height superiority illusion.pdf".
 
+In order to run the experiment, you need to have the expyriment library installed.
+
 The main experiment file is ExperimentLetterSize.py, that you can run in your terminal using
 
 ```
