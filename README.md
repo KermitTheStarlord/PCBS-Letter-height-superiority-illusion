@@ -8,7 +8,7 @@ The article is available in this distro, as "New et al. - 2015 - The letter heig
 
 WebPage of this readme file hosted by Github available at https://kermitthestarlord.github.io/PCBS_Letter_height_superiority_illusion/
 
-In order to run the experiment, you need to have the expyriment library installed.
+In order to run the experiment, you need to have the expyriment library installed. Find it at https://expyriment.org/. Instruction for installation can be found at https://pcbs.readthedocs.io/en/latest/software-installation.html.
 
 The main experiment file is ExperimentLetterSize.py, that you can run in your terminal using
 
