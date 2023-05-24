@@ -1,5 +1,6 @@
 # PCBS-Letter-height-superiority-illusion
 https://github.com/KermitTheStarlord/PCBS_Letter_height_superiority_illusion/
+
 This is a reproduction of the Letter Height Superiority Illusion, as done in the 2014 paper "The letter height superiority Illusion - brief report", by Boris New, Karie Doré-Mazars, Céline Cavézian, Christophe Pallier, Julien Barra.
 DOI 10.3758/s13423-014-075308
 
